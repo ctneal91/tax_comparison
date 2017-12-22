@@ -21,13 +21,13 @@ if (married == true) && (jointly == true)
   household_income = gets.to_i
 elsif (married == true)
   puts "What is your personal income?" + digit_statement
-  personal_income == gets.to_i
+  personal_income = gets.to_i
   puts "And your spouse's income?" + digit_statement
-  spousal_income == gets.to_i
+  spousal_income = gets.to_i
 else
   #aka if single
   puts "What is your income?" + digit_statement
-  personal_income == gets.to_i
+  personal_income = gets.to_i
 end
 
 #check for IRA & 401k contribution
