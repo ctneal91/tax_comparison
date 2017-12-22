@@ -49,6 +49,10 @@ else
   property_tax = 0
 end
 
+#check for charitable contributions
+puts "How much did you donate to charities this year?" + digit_statement
+charitable_donations = gets.to_i
+
 #check for student loan deduction
 puts "How much did you (or you and your spouse) pay in student loan interest?" + digit_statement
 student_loan_interest = gets.to_i
@@ -74,10 +78,11 @@ else
 end
 
 #determine if payer should itemize deductions
-non_standard_deductions = property_tax + state_income_tax
+non_standard_deductions = property_tax + state_income_tax + charitable_donations
 standard_deduction = 6300
-additional_deductions = (
-  student_loan_interest + mortgage_interest + retirement_contributions)
+additional_deductions = (student_loan_interest +
+                         mortgage_interest +
+                         retirement_contributions)
 if (married == true) && (jointly == true)
   standard_deduction = standard_deduction*2
 end
@@ -87,6 +92,7 @@ else
   total_deduction = standard_deduction + additional_deductions
 end
 
+puts total_deduction
 
 #establish tax brackets
 old_single_tax_brackets = [0, 10000, 30000, 60000, 100000, 500000, 15000000]
