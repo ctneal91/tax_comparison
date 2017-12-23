@@ -129,12 +129,17 @@ new_total_deduction = additional_deductions + standard_or_itemized(new_itemized_
                                                                    new_standard_deduction,
                                                                    jointly)
 
-#establish tax brackets
-old_single_tax_brackets = [0, 10000, 30000, 60000, 100000, 500000, 15000000]
+#establish old tax brackets & rates
+old_single_tax_brackets = [0, 9525, 38700, 93700, 195450, 424950, 426700]
 old_married_joint_tax_brackets = []
 old_single_tax_brackets.each do |amount|
   old_married_joint_tax_brackets.push(amount*2)
 end
-puts old_married_joint_tax_brackets
+old_rates = [0.1, 0.15, 0.25, 0.28, 0.33, 0.35, 0.396]
 
-old_rates = [0.1, 0.15, 0.25, 0.28, 0.32, 0.35, 0.39]
+#establish new tax brackets & rates
+new_single_tax_brackets = [0, 9525, 38700, 82500, 157500, 200000, 500000]
+new_married_joint_tax_brackets = []
+new_single_tax_brackets.each do |amount|
+  new_married_joint_tax_brackets.push(amount)
+end
