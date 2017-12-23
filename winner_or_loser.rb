@@ -14,6 +14,12 @@ else
   puts "Falseyyyy"
 end
 
+if (married == true) && (jointly == true)
+  pronoun = "y'all"
+else
+  pronoun = "you"
+end
+
 #find out income
 digit_statement = "[Round to the nearest dollar. Do not add dollar signs or commas.]"
 if (married == true) && (jointly == true)
@@ -31,18 +37,18 @@ else
 end
 
 #check for IRA & 401k contribution
-puts "How much did you contribute to a 401k or a traditional IRA this year?" + digit_statement
+puts "How much did " + pronoun + " contribute to a 401k or a traditional IRA this year?" + digit_statement
 retirement_contributions = gets.to_i
 
 #check for SALT & mortgage interest deductions
-puts "How much do you pay each year in state income tax?" + digit_statement
+puts "How much do " + pronoun + " pay each year in state income tax?" + digit_statement
 state_income_tax = gets.to_i
 puts "Do you own your home?"
 home_owner = gets.to_i
 if home_owner == 1
-  puts "How much mortgage interest do you pay yearly?" + digit_statement
+  puts "How much mortgage interest do" + pronoun + " pay yearly?" + digit_statement
   mortgage_interest = gets.to_i
-  puts "How much property tax do you pay yearly?" + digit_statement
+  puts "How much property tax do" + pronoun + " pay yearly?" + digit_statement
   property_tax = gets.to_i
 else
   mortgage_interest = 0
@@ -50,11 +56,11 @@ else
 end
 
 #check for charitable contributions
-puts "How much did you donate to charities this year?" + digit_statement
+puts "How much did " + pronoun + " you donate to charities this year?" + digit_statement
 charitable_donations = gets.to_i
 
 #check for student loan deduction
-puts "How much did you (or you and your spouse) pay in student loan interest?" + digit_statement
+puts "How much did " + pronoun + " pay in student loan interest?" + digit_statement
 student_loan_interest = gets.to_i
 if student_loan_interest > 2500
   #max allowed under old and 2018 laws
