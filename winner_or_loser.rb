@@ -97,23 +97,37 @@ else
 end
 
 #determine if payer should itemize deductions
-non_standard_deductions = property_tax + state_income_tax + charitable_donations
-standard_deduction = 6300
+def standard_or_itemized(itemized_deductions, standard_deduction, jointly)
+  if (jointly == true)
+    standard_deduction = standard_deduction*2
+  end
+  if itemized_deductions > standard_deduction
+    total_deduction = itemized_deductions + additional_deductions
+  else
+    total_deduction = standard_deduction + additional_deductions
+  end
+  return total deduction
+end
+old_salt_deductions = property_tax + state_income_tax
+old_itemized_deductions = old_salt_deductions + charitable_donations
+old_standard_deduction = 6300
 additional_deductions = (student_loan_interest +
                          mortgage_interest +
                          retirement_contributions)
-if (married == true) && (jointly == true)
-  standard_deduction = standard_deduction*2
-end
-if non_standard_deductions > standard_deduction
-  total_deduction = non_standard_deductions + additional_deductions
+old_total_deduction = additional_deductions + standard_or_itemized(old_itemized_deductions,
+                                                                old_standard_deduction,
+                                                                jointly)
+#new salt deductions capped at $10,0000
+if old_salt_deductions > 10000
+  new_salt_deductions = 10000
 else
-  total_deduction = standard_deduction + additional_deductions
+  new_salt_deductions = old_salt_deductions
 end
-
-puts total_deduction
-
-taxable_income = income - personal_exemptions*4100 - total_deduction
+new_itemized_deductions = new_salt_deductions + charitable_donations
+new_standard_deduction = 12000
+new_total_deduction = additional_deductions + standard_or_itemized(new_itemized_deductions,
+                                                                   new_standard_deduction,
+                                                                   jointly)
 
 #establish tax brackets
 old_single_tax_brackets = [0, 10000, 30000, 60000, 100000, 500000, 15000000]
