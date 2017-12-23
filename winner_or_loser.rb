@@ -129,6 +129,10 @@ new_total_deduction = additional_deductions + standard_or_itemized(new_itemized_
                                                                    new_standard_deduction,
                                                                    jointly)
 
+#determine taxable income
+old_taxable_income = income - old_total_deduction
+new_taxable_income = income - new_total_deduction
+
 #establish old tax brackets & rates.  These are the ones that would have taken
 #effect in 2018 if the new tax plan had not passed.
 old_single_tax_brackets = [0, 9525, 38700, 93700, 195450, 424950, 426700]
