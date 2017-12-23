@@ -27,16 +27,16 @@ end
 digit_statement = "[Round to the nearest dollar. Do not add dollar signs or commas.]"
 if (married == true) && (jointly == true)
   puts "What is your combined household income?" + digit_statement
-  household_income = gets.to_i
+  income = gets.to_i
 elsif (married == true)
   puts "What is your personal income?" + digit_statement
-  personal_income = gets.to_i
+  income = gets.to_i
   puts "And your spouse's income?" + digit_statement
   spousal_income = gets.to_i
 else
   #aka if single
   puts "What is your income?" + digit_statement
-  personal_income = gets.to_i
+  income = gets.to_i
 end
 
 #find out & calculate personal exemptions
@@ -112,6 +112,8 @@ else
 end
 
 puts total_deduction
+
+taxable_income = income - personal_exemptions*4100 - total_deduction
 
 #establish tax brackets
 old_single_tax_brackets = [0, 10000, 30000, 60000, 100000, 500000, 15000000]
