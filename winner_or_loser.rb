@@ -14,10 +14,13 @@ else
   puts "Falseyyyy"
 end
 
+# set pronouns
 if (married == true) && (jointly == true)
   pronoun = "y'all"
+  possessive_pronoun = pronoun + "'s"
 else
   pronoun = "you"
+  possessive_pronoun = pronoun + "r"
 end
 
 #find out income
@@ -35,6 +38,16 @@ else
   puts "What is your income?" + digit_statement
   personal_income = gets.to_i
 end
+
+#find out & calculate personal exemptions
+puts "Besides " + pronoun + ", how many other people are in your household that will not be filing their own taxes?"
+additional_exemptions = gets.to_i
+if (joint == true)
+  personal_exemptions = 2
+else
+  personal_exemptions = 1
+end
+total_exemptions = personal_exemptions + additional_exemptions
 
 #check for IRA & 401k contribution
 puts "How much did " + pronoun + " contribute to a 401k or a traditional IRA this year?" + digit_statement
