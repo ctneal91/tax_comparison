@@ -129,7 +129,8 @@ new_total_deduction = additional_deductions + standard_or_itemized(new_itemized_
                                                                    new_standard_deduction,
                                                                    jointly)
 
-#establish old tax brackets & rates
+#establish old tax brackets & rates.  These are the ones that would have taken
+#effect in 2018 if the new tax plan had not passed.
 old_single_tax_brackets = [0, 9525, 38700, 93700, 195450, 424950, 426700]
 old_married_joint_tax_brackets = []
 old_single_tax_brackets.each do |amount|
@@ -143,3 +144,4 @@ new_married_joint_tax_brackets = []
 new_single_tax_brackets.each do |amount|
   new_married_joint_tax_brackets.push(amount)
 end
+new_rates = [0.1, 0.12, 0.22, 0.24, 0.32, 0.35, 0.37]
