@@ -42,7 +42,7 @@ end
 #find out & calculate personal exemptions
 puts "Besides " + pronoun + ", how many other people are in your household that will not be filing their own taxes?"
 additional_exemptions = gets.to_i
-if (joint == true)
+if (jointly == true)
   personal_exemptions = 2
 else
   personal_exemptions = 1
@@ -132,6 +132,8 @@ new_total_deduction = additional_deductions + standard_or_itemized(new_itemized_
 #determine taxable income
 old_taxable_income = income - old_total_deduction
 new_taxable_income = income - new_total_deduction
+puts "You used to pay taxes on: " + old_taxable_income
+puts "Now you pay taxes on: " + new_taxable_income
 
 #establish old tax brackets & rates.  These are the ones that would have taken
 #effect in 2018 if the new tax plan had not passed.
